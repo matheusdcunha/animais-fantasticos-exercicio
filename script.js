@@ -1,6 +1,6 @@
 function initTabNav() {
-  const tabMenu = document.querySelectorAll(".js-tabmenu li");
-  const tabContent = document.querySelectorAll(".js-tabcontent section");
+  const tabMenu = document.querySelectorAll('[data-tab="menu"] li');
+  const tabContent = document.querySelectorAll('[data-tab="content"] section');
 
   if (tabMenu.length && tabContent.length) {
     tabContent[0].classList.add("ativo");
@@ -9,7 +9,8 @@ function initTabNav() {
       tabContent.forEach((section) => {
         section.classList.remove("ativo");
       });
-      tabContent[index].classList.add("ativo");
+      const direcao = tabContent[index].dataset.anime;
+      tabContent[index].classList.add("ativo", direcao);
     }
 
     tabMenu.forEach((itemMenu, index) => {
@@ -21,7 +22,9 @@ function initTabNav() {
 }
 
 function initAccordionList() {
-  const accordionList = document.querySelectorAll(".js-accordion dt");
+  const accordionList = document.querySelectorAll(
+    "[data-anime='accordion'] dt"
+  );
   const activeClass = "ativo";
   if (accordionList.length) {
     accordionList[0].classList.add(activeClass);
@@ -39,7 +42,9 @@ function initAccordionList() {
 }
 
 function initSmoothScroll() {
-  const linksInternos = document.querySelectorAll(".js-menu a[href^='#']");
+  const linksInternos = document.querySelectorAll(
+    "[data-menu='smooth'] a[href^='#']"
+  );
 
   function scrollToSection(event) {
     event.preventDefault();
@@ -65,7 +70,7 @@ function initSmoothScroll() {
 }
 
 function initScroll() {
-  const sections = document.querySelectorAll(".js-scroll");
+  const sections = document.querySelectorAll('[data-anime="scroll"]');
   const windowMetade = window.innerHeight * 0.6;
   if (sections.length) {
     function animaScroll() {
@@ -88,3 +93,13 @@ initTabNav();
 initAccordionList();
 initSmoothScroll();
 initScroll();
+
+// Utilizando estes atributos, adicione a classe
+// show-down ou show-right a sua respectiva section
+// assim que a mesma aparecer na tela (animacao tab)
+
+// No CSS faça com que show-down anime de cima para baixo
+// e show-right continue com a mesma animação da esquerda
+// para a direita
+
+// Substitua todas as classes js- por data atributes.
