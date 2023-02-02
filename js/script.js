@@ -6,8 +6,6 @@ import initModal from "./modules/modal.js";
 import initToolTip from "./modules/tooltip.js";
 import initDropDownMenu from "./modules/dropdown-menu.js";
 
-import OutsideClick from "./modules/outsideClick.js";
-
 initTabNav();
 initAccordionList();
 initSmoothScroll();
@@ -15,4 +13,3 @@ initScroll();
 initModal();
 initToolTip();
 initDropDownMenu();
-OutsideClick();
